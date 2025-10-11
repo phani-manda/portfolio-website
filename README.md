@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Personal Portfolio Website
 
 A modern, responsive portfolio website built with React and Tailwind CSS.
@@ -82,3 +83,6 @@ This creates an optimized production build in the `build` folder.
 ## License
 
 MIT License - feel free to use this for your own portfolio!
+=======
+# portfolio-website
+>>>>>>> 9c9225363d48a2b76f86eeead309a4aad9beac1b

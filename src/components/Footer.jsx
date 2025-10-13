@@ -38,7 +38,6 @@ const Footer = () => {
 
           {/* Right Side */}
           <div className="md:text-right">
-            <h4 className="text-lg font-light mb-4">Let's Connect</h4>
             <div className="flex md:justify-end space-x-4 mb-6">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a

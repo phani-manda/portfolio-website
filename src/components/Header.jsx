@@ -25,8 +25,7 @@ const Header = () => {
   const navItems = [
     { label: 'About', id: 'about' },
     { label: 'Skills', id: 'skills' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Contact', id: 'contact' }
+    { label: 'Projects', id: 'projects' }
   ];
 
   return (
@@ -44,7 +43,7 @@ const Header = () => {
             onClick={() => scrollToSection('hero')}
             className="text-xl font-light tracking-tight text-black hover:scale-105 transition-transform duration-200"
           >
-            Alex Chen
+            Phani Manda
           </button>
 
           {/* Desktop Navigation */}

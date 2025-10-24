@@ -48,7 +48,8 @@ export const portfolioData = {
       features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
       github: "https://github.com/phani-manda/chatX",
       live: "https://chatx-zydfu.sevalla.app/",
-      image: "C:\my all projects\full stack course\public\image.png"
+  // Use a web-friendly path (public folder root) to avoid backslash escapes
+  image: "/image.png"
     }
   ],
 

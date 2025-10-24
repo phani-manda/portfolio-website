@@ -42,22 +42,22 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
-      title: "Portfolio Projects Coming Soon",
-      description: "I'm currently working on exciting projects that will be showcased here soon. Stay tuned for updates on my latest work in web development, AI, and software engineering.",
-      tech: ["React", "Node.js", "Python", "MongoDB"],
-      features: ["Currently in development", "Multiple projects planned", "Will be updated regularly"],
-      github: "https://github.com/phani-manda",
-      live: "https://github.com/phani-manda",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop"
+      title: "ChatX - A Real-Time Chat Application",
+      description: "A real time chat application using web sockets for instant communication between users. supports one on one and group chats.",
+      tech: ["React", "Node.js", "Express", "Socket.io", "MongoDB"],
+      features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
+      github: "https://github.com/phani-manda/chatX",
+      live: "https://chatx-zydfu.sevalla.app/",
+      image: "C:\my all projects\full stack course\public\image.png"
     }
   ],
 
   upcomingProjects: [
     {
       id: 1,
-      title: "AI Code Review Assistant",
-      description: "Machine learning powered tool to automatically review code and suggest improvements. Currently in research phase.",
-      tech: ["Python", "TensorFlow", "NLP", "GitHub API"],
+      title: "AI powered resume optimizer",
+      description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
+      tech: ["react", "typescript", "gemini API", "node.js", "express"],
       status: "In Development",
       timeline: "Q2 2025"
     }

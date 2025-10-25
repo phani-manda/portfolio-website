@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from './ui/button';
+import { useTheme } from 'next-themes';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +15,11 @@ const Header = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // mark mounted to avoid rendering mismatch during hydration or initial render
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -47,7 +55,7 @@ const Header = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -57,6 +65,17 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            {/* Theme toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle theme"
+              className="text-gray-700"
+            >
+              {mounted ? (theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />) : <Moon size={16} />}
+            </Button>
+
             <Button
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600 transition-colors duration-200 shadow-md"
@@ -87,7 +106,19 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
-            <div className="px-4 pt-2">
+            <div className="px-4 pt-2 space-y-2">
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  aria-label="Toggle theme"
+                >
+                  {mounted ? (theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />) : <Moon size={16} />}
+                </Button>
+                <div className="flex-1" />
+              </div>
+
               <Button
                 onClick={() => scrollToSection('contact')}
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600"

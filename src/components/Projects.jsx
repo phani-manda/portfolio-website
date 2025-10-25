@@ -28,13 +28,15 @@ const Projects = () => {
               className="border-none shadow-sm bg-white hover:shadow-lg transition-all duration-500 group overflow-hidden"
             >
               <CardContent className="p-0">
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                {/* Make columns stretch to the same height on large screens so image fills the card height */}
+                <div className={`grid lg:grid-cols-2 gap-0 items-stretch ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                   {/* Project Image */}
-                  <div className={`relative overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  {/* Image column: use a fixed height on small screens but fill the column height on large screens */}
+                  <div className={`relative overflow-hidden h-64 lg:h-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                   </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -2,7 +2,7 @@ import React from 'react';
 import { Clock, Zap, Calendar } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const UpcomingProjects = () => {
   const getStatusIcon = (status) => {

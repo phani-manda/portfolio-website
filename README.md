@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Personal Portfolio Website
 
 A modern, responsive portfolio website built with React and Tailwind CSS.
@@ -67,7 +66,7 @@ This creates an optimized production build in the `build` folder.
 
 ## Customization
 
-1. Update your personal information in `src/mock.js`
+1. Update your personal information in `src/data/portfolioData.js`
 2. Modify components in `src/components/`
 3. Adjust styling in component files or Tailwind config
 4. Add your projects and skills data
@@ -83,6 +82,3 @@ This creates an optimized production build in the `build` folder.
 ## License
 
 MIT License - feel free to use this for your own portfolio!
-=======
-# portfolio-website
->>>>>>> 9c9225363d48a2b76f86eeead309a4aad9beac1b

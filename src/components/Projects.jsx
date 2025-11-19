@@ -3,7 +3,7 @@ import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const Projects = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 import { Code, Database, Settings, Lightbulb } from 'lucide-react';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const Skills = () => {
   const skillCategories = [

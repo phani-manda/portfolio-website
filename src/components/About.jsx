@@ -2,7 +2,7 @@ import React from 'react';
 import { GraduationCap, Award, Users, Code } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const About = () => {
   const highlights = [

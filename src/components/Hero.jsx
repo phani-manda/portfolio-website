@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const Hero = () => {
   const circleRef = useRef(null);

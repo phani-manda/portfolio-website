@@ -2,7 +2,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data/portfolioData';
 
 const Contact = () => {
 

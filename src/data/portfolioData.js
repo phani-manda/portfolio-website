@@ -50,6 +50,16 @@ export const portfolioData = {
       live: "https://chatx-zydfu.sevalla.app/",
   // Use a web-friendly path (public folder root) to avoid backslash escapes
   image: "/image.png"
+    },
+    {
+      id: 2,
+      title: "Dev-Portfolio",
+      description: "A personal portfolio website to showcase my skills and projects. Built with React and Tailwind CSS, and designed to be clean, modern, and easy to navigate.",
+      tech: ["React", "Tailwind CSS", "Shadcn/ui"],
+      features: ["Responsive design", "Modern UI", "Easy to customize"],
+      github: "https://github.com/phani-manda/dev-portfolio",
+      live: "https://dev-portfolio-lilac.vercel.app/",
+      image: "/portfolio.png"
     }
   ],
 

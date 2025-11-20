@@ -3,6 +3,7 @@ import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 import { Code, Database, Settings, Lightbulb } from 'lucide-react';
 import { portfolioData } from '../data';
+import GlassPanel from './GlassPanel';
 
 const Skills = () => {
   const skillCategories = [
@@ -33,8 +34,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-background">
+    <section id="skills" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
+        <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
@@ -51,7 +53,7 @@ const Skills = () => {
           {skillCategories.map(({ title, icon: Icon, skills, description }, index) => (
             <Card
               key={index}
-              className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 hover:bg-card/80 transition-all duration-300 group"
+              className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_15px_40px_rgba(8,8,20,0.4)] hover:shadow-[0_20px_50px_rgba(10,10,30,0.55)] transition-all duration-300 group"
             >
               <CardContent className="p-8">
                 <div className="flex items-center space-x-3 mb-4">
@@ -83,7 +85,7 @@ const Skills = () => {
 
         {/* Skills Summary */}
         <div className="mt-16 text-center">
-          <Card className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
+          <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_15px_40px_rgba(8,8,20,0.4)]">
             <CardContent className="p-8">
               <h3 className="text-2xl font-light text-card-foreground mb-4">
                 Always Learning
@@ -96,6 +98,7 @@ const Skills = () => {
             </CardContent>
           </Card>
         </div>
+        </GlassPanel>
       </div>
     </section>
   );

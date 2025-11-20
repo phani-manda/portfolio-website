@@ -3,6 +3,7 @@ import { Clock, Zap, Calendar } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { portfolioData } from '../data';
+import GlassPanel from './GlassPanel';
 
 const UpcomingProjects = () => {
   const getStatusIcon = (status) => {
@@ -22,8 +23,10 @@ const UpcomingProjects = () => {
   };
 
   return (
-    <section id="upcoming" className="py-24 bg-background">
+    <section id="upcoming" className="relative py-24">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b" />
       <div className="max-w-6xl mx-auto px-6">
+        <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
@@ -43,7 +46,7 @@ const UpcomingProjects = () => {
             return (
               <Card
                 key={project.id ?? index}
-                className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 hover:bg-card/80 transition-all duration-300 group"
+                className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.45)] hover:shadow-[0_25px_70px_rgba(10,10,30,0.65)] transition-all duration-300 group"
               >
                 <CardContent className="p-8">
                   {/* Status Badge */}
@@ -112,7 +115,7 @@ const UpcomingProjects = () => {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <Card className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
+          <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_15px_45px_rgba(8,8,20,0.4)]">
             <CardContent className="p-8">
               <h3 className="text-2xl font-light text-card-foreground mb-4">
                 Stay Updated
@@ -124,6 +127,7 @@ const UpcomingProjects = () => {
             </CardContent>
           </Card>
         </div>
+        </GlassPanel>
       </div>
     </section>
   );

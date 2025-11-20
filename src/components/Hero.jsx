@@ -2,21 +2,32 @@ import React, { useEffect, useRef } from 'react';
 import { ChevronDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { portfolioData } from '../data';
+import GlassPanel from './GlassPanel';
 
 const Hero = () => {
   const circleRef = useRef(null);
 
   useEffect(() => {
+    let frameId = null;
+
     const handleScroll = () => {
-      if (circleRef.current) {
+      if (!circleRef.current || frameId) return;
+
+      frameId = requestAnimationFrame(() => {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
+        const rate = scrolled * -0.35;
         circleRef.current.style.transform = `rotate(${rate}deg)`;
-      }
+        frameId = null;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   const scrollToAbout = () => {
@@ -24,7 +35,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated Background Circle */}
       <div
         ref={circleRef}
@@ -59,10 +70,9 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center z-10 pt-20">
-        {/* Main Content */}
-        <div className="space-y-8 animate-fade-in">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-light tracking-tight text-foreground leading-none">
+      <div className="max-w-6xl mx-auto px-6 text-center z-10 pt-24 w-full">
+        <GlassPanel className="px-6 py-10 sm:px-12 sm:py-14 lg:py-16 animate-fade-in space-y-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground leading-tight">
             {portfolioData.personal.name}
           </h1>
 
@@ -75,7 +85,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button
               onClick={scrollToAbout}
               className="bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
@@ -94,7 +104,7 @@ const Hero = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center space-x-6 pt-8">
+          <div className="flex justify-center space-x-6 pt-6">
             {[
               { icon: Github, href: portfolioData.personal.github, label: "GitHub" },
               { icon: Linkedin, href: portfolioData.personal.linkedin, label: "LinkedIn" },
@@ -112,12 +122,11 @@ const Hero = () => {
               </a>
             ))}
           </div>
-        </div>
-
+        </GlassPanel>
         {/* Scroll Indicator */}
         <button
           onClick={scrollToAbout}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+          className="mt-12 inline-flex animate-bounce"
         >
           <ChevronDown size={32} className="text-foreground opacity-60" />
         </button>

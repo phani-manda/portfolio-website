@@ -4,11 +4,13 @@ import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { portfolioData } from '../data';
+import GlassPanel from './GlassPanel';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-background ">
+    <section id="projects" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
+        <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
@@ -25,7 +27,7 @@ const Projects = () => {
           {portfolioData.projects.map((project, index) => (
             <Card
               key={project.id}
-              className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 transition-all duration-500 group overflow-hidden"
+              className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_25px_60px_rgba(8,8,20,0.5)] hover:shadow-[0_30px_80px_rgba(10,10,30,0.65)] transition-all duration-500 group overflow-hidden"
             >
               <CardContent className="p-0">
                 {/* Make columns stretch to the same height on large screens so image fills the card height */}
@@ -108,7 +110,7 @@ const Projects = () => {
 
         {/* More Projects CTA */}
         <div className="text-center mt-16">
-          <Card className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
+          <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_15px_40px_rgba(8,8,20,0.4)]">
             <CardContent className="p-8">
               <h3 className="text-2xl font-light text-card-foreground mb-4">
                 More Projects on GitHub
@@ -128,6 +130,7 @@ const Projects = () => {
             </CardContent>
           </Card>
         </div>
+        </GlassPanel>
       </div>
     </section>
   );

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
-import { useTheme } from 'next-themes';
+
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +17,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // mark mounted to avoid rendering mismatch during hydration or initial render
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -37,19 +34,18 @@ const Header = () => {
   ];
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md border-b border-gray-200' 
-          : 'bg-transparent'
-      }`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-background/95 backdrop-blur-md border-b border-border'
+        : 'bg-transparent'
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="text-xl font-light tracking-tight text-black hover:scale-105 transition-transform duration-200"
+            className="text-xl font-light tracking-tight text-foreground hover:scale-105 transition-transform duration-200"
           >
             Phani Manda
           </button>
@@ -60,21 +56,12 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-normal text-black hover:-translate-y-0.5 transition-transform duration-200 hover:text-gray-600"
+                className="text-sm font-normal text-foreground hover:-translate-y-0.5 transition-transform duration-200 hover:text-muted-foreground"
               >
                 {item.label}
               </button>
             ))}
-            {/* Theme toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              aria-label="Toggle theme"
-              className="text-gray-700"
-            >
-              {mounted ? (theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />) : <Moon size={16} />}
-            </Button>
+            {/* Theme toggle removed */}
 
             <Button
               onClick={() => scrollToSection('contact')}
@@ -96,26 +83,19 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-200 bg-white rounded-b-lg">
+          <div className="md:hidden mt-4 py-4 border-t border-border bg-background rounded-b-lg">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-3 text-sm font-normal text-black hover:bg-gray-50"
+                className="block w-full text-left px-4 py-3 text-sm font-normal text-foreground hover:bg-secondary"
               >
                 {item.label}
               </button>
             ))}
             <div className="px-4 pt-2 space-y-2">
               <div className="flex items-center justify-between">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  aria-label="Toggle theme"
-                >
-                  {mounted ? (theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />) : <Moon size={16} />}
-                </Button>
+
                 <div className="flex-1" />
               </div>
 

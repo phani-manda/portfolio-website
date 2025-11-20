@@ -1,10 +1,10 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     { icon: Github, href: portfolioData.personal.github, label: "GitHub" },
     { icon: Linkedin, href: portfolioData.personal.linkedin, label: "LinkedIn" },
@@ -16,22 +16,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-12">
+    <footer className="bg-background border-t border-border py-12">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Left Side */}
           <div>
             <button
               onClick={scrollToTop}
-              className="text-2xl font-light tracking-tight hover:text-gray-300 transition-colors duration-200 mb-4"
+              className="text-2xl font-light tracking-tight text-foreground hover:text-muted-foreground transition-colors duration-200 mb-4"
             >
               {portfolioData.personal.name}
             </button>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Computer Science student passionate about building innovative software solutions. 
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              Computer Science student passionate about building innovative software solutions.
               Always excited to take on new challenges and learn cutting-edge technologies.
             </p>
-            <p className="text-gray-400 text-xs">
+            <p className="text-muted-foreground/80 text-xs">
               Available for internships and full-time SDE opportunities.
             </p>
           </div>
@@ -45,24 +45,24 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 hover:scale-110 transition-all duration-200"
+                  className="p-2 bg-secondary rounded-lg hover:bg-secondary/80 hover:scale-110 transition-all duration-200 text-foreground"
                   aria-label={label}
                 >
                   <Icon size={18} />
                 </a>
               ))}
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-muted-foreground text-sm">
               {portfolioData.personal.location}
             </p>
           </div>
         </div>
 
         {/* Bottom Border */}
-        <div className="border-t border-gray-800 mt-8 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        <div className="border-t border-border mt-8 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p className="flex items-center">
-              © {currentYear} {portfolioData.personal.name}. Built with 
+              © {currentYear} {portfolioData.personal.name}. Built with
               <Heart size={14} className="mx-1 text-red-500" />
               using React & Tailwind CSS.
             </p>

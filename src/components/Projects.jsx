@@ -3,19 +3,19 @@ import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { portfolioData } from '../mock';
+import { portfolioData } from '../data';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-white to-purple-50/20">
+    <section id="projects" className="py-24 bg-gradient-to-b from-background ">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-black mb-6">
+          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
             Featured Projects
           </h2>
-          <div className="w-16 h-px bg-black mx-auto mb-4"></div>
-          <p className="text-lg font-normal text-gray-600 max-w-2xl mx-auto">
+          <div className="w-16 h-px bg-foreground mx-auto mb-4"></div>
+          <p className="text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
             A selection of projects that showcase my technical abilities and problem-solving approach
           </p>
         </div>
@@ -23,9 +23,9 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="space-y-12">
           {portfolioData.projects.map((project, index) => (
-            <Card 
+            <Card
               key={project.id}
-              className="border-none shadow-sm bg-white hover:shadow-lg transition-all duration-500 group overflow-hidden"
+              className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 transition-all duration-500 group overflow-hidden"
             >
               <CardContent className="p-0">
                 {/* Make columns stretch to the same height on large screens so image fills the card height */}
@@ -44,21 +44,21 @@ const Projects = () => {
                   {/* Project Content */}
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
                     <div className="space-y-6">
-                      <h3 className="text-3xl font-light text-black group-hover:text-gray-700 transition-colors duration-200">
+                      <h3 className="text-3xl font-light text-card-foreground group-hover:text-purple-400 transition-colors duration-200">
                         {project.title}
                       </h3>
-                      
-                      <p className="text-gray-600 leading-relaxed">
+
+                      <p className="text-muted-foreground leading-relaxed">
                         {project.description}
                       </p>
 
                       {/* Tech Stack */}
                       <div className="flex flex-wrap gap-2">
                         {project.tech.map((tech, techIndex) => (
-                          <Badge 
+                          <Badge
                             key={techIndex}
                             variant="secondary"
-                            className="bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors duration-200"
+                            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors duration-200"
                           >
                             {tech}
                           </Badge>
@@ -67,8 +67,8 @@ const Projects = () => {
 
                       {/* Features */}
                       <div className="space-y-2">
-                        <h4 className="font-medium text-black">Key Features:</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
+                        <h4 className="font-medium text-foreground">Key Features:</h4>
+                        <ul className="text-sm text-muted-foreground space-y-1">
                           {project.features.map((feature, featureIndex) => (
                             <li key={featureIndex} className="flex items-center space-x-2">
                               <ArrowRight size={14} className="text-gray-400" />
@@ -108,13 +108,13 @@ const Projects = () => {
 
         {/* More Projects CTA */}
         <div className="text-center mt-16">
-          <Card className="border-none shadow-sm bg-white">
+          <Card className="bg-card border border-purple-500/20 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-light text-black mb-4">
+              <h3 className="text-2xl font-light text-card-foreground mb-4">
                 More Projects on GitHub
               </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                These are just a few highlights. Check out my GitHub for more projects, 
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                These are just a few highlights. Check out my GitHub for more projects,
                 contributions to open-source, and experimental code.
               </p>
               <Button

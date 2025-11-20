@@ -49,18 +49,25 @@ export const portfolioData = {
       github: "https://github.com/phani-manda/chatX",
       live: "https://chatx-zydfu.sevalla.app/",
   // Use a web-friendly path (public folder root) to avoid backslash escapes
-  image: "/image.png"
+  image: "/image.jpg"
+    },
+
+    {
+      id: 2,
+      title: "Resumo - AI powered resume optimizer",
+      description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
+      tech: ["React", "Node.js", "Express", "Gemini API", "PostgreSQL", "Prisma", "Vercel", "Render","Tailwind CSS"],
+      features: ["AI powered resume optimizer", "Keywords generation based on job description", "Personalized AI chat bot"],
+      github: "https://github.com/phani-manda/resumo-ATS",
+      live: "https://resumo-ats.vercel.app/",
+  // Use a web-friendly path (public folder root) to avoid backslash escapes
+  image: "/resumo.png"
     }
   ],
 
   upcomingProjects: [
     {
-      id: 1,
-      title: "AI powered resume optimizer",
-      description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
-      tech: ["react", "typescript", "gemini API", "node.js", "express"],
-      status: "In Development",
-      timeline: "Q2 2025"
+      description: "coming soon"
     }
   ],
 

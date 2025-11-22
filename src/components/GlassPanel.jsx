@@ -5,7 +5,7 @@ const GlassPanel = ({ className = '', children }) => {
   return (
     <div
       className={clsx(
-        'rounded-3xl border border-white/5 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_rgba(6,6,20,0.35)] transition-colors duration-300',
+        'rounded-3xl border border-white/5 bg-white/3 backdrop-blur-xl shadow-[0_20px_60px_rgba(6,6,20,0.35)] transition-colors duration-300',
         'relative overflow-hidden',
         className
       )}

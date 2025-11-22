@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import { ChevronDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { portfolioData } from '../data';
@@ -30,9 +30,24 @@ const Hero = () => {
     };
   }, []);
 
-  const scrollToAbout = () => {
+  const scrollToAbout = useCallback(() => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
+
+  const handleDownloadResume = useCallback(() => {
+    const link = document.createElement('a');
+    link.href = portfolioData.personal.resume;
+    link.download = 'Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, []);
+
+  const socialLinks = useMemo(() => [
+    { icon: Github, href: portfolioData.personal.github, label: "GitHub" },
+    { icon: Linkedin, href: portfolioData.personal.linkedin, label: "LinkedIn" },
+    { icon: Mail, href: `mailto:${portfolioData.personal.email}`, label: "Email" }
+  ], []);
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -97,6 +112,7 @@ const Hero = () => {
               variant="outline"
               className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white hover:scale-105 transition-all duration-200"
               size="lg"
+              onClick={handleDownloadResume}
             >
               <FileText className="w-4 h-4 mr-2" />
               Download Resume
@@ -105,11 +121,7 @@ const Hero = () => {
 
           {/* Social Links */}
           <div className="flex justify-center space-x-6 pt-6">
-            {[
-              { icon: Github, href: portfolioData.personal.github, label: "GitHub" },
-              { icon: Linkedin, href: portfolioData.personal.linkedin, label: "LinkedIn" },
-              { icon: Mail, href: `mailto:${portfolioData.personal.email}`, label: "Email" }
-            ].map(({ icon: Icon, href, label }) => (
+            {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
@@ -145,4 +157,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

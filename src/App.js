@@ -1,20 +1,22 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Portfolio from "./components/Portfolio";
-import ClickSpark from './components/ClickSpark';
+import LoadingFallback from './components/LoadingFallback';
+
+// Lazy load the Portfolio component
+const Portfolio = lazy(() => import("./components/Portfolio"));
 
 function App() {
   return (
-    <ClickSpark>
-      <div className="App">
-        <BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<Portfolio />} />
           </Routes>
-        </BrowserRouter>
-      </div>
-    </ClickSpark>
+        </Suspense>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -17,10 +17,10 @@ const Portfolio = () => {
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Silk
             className="w-full h-full"
-            speed={4}
-            scale={1.4}
-            color="#7B7481"
-            noiseIntensity={1.2}
+            speed={2}
+            scale={1.8}
+            color="#8B5CF6"
+            noiseIntensity={1.0}
             rotation={0.45}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background pointer-events-none" />

@@ -48,7 +48,7 @@ const Footer = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-110 transition-all duration-200 text-foreground"
+                    className="p-2 rounded-lg border border-white/8 bg-white/3 hover:bg-white/8 hover:scale-110 transition-all duration-200 text-foreground"
                     aria-label={label}
                   >
                     <Icon size={18} />

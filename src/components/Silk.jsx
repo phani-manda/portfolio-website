@@ -102,7 +102,7 @@ SilkPlane.displayName = 'SilkPlane';
 const Silk = ({
   speed = 5,
   scale = 1.2,
-  color = '#7B7481',
+  color = '#7f00efee',
   noiseIntensity = 1.5,
   rotation = 0.3,
   className = ''
@@ -124,9 +124,16 @@ const Silk = ({
   return (
     <Canvas
       className={className}
-      dpr={[1, 1.5]}
-      gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
-      frameloop="always"
+      dpr={1} // Low pixel density for better performance
+      gl={{
+        alpha: true,
+        antialias: false, // Disabled for performance
+        powerPreference: 'high-performance', // Use dedicated GPU if available
+        stencil: false, // Not needed for 2D
+        depth: false // Not needed for 2D
+      }}
+      frameloop="always" // Continuous animation
+      performance={{ min: 0.5 }} // Allow degradation if needed
     >
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
@@ -134,4 +141,3 @@ const Silk = ({
 };
 
 export default Silk;
-

@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { GraduationCap, Award, Users, Code } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { portfolioData } from '../data';
 import GlassPanel from './GlassPanel';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const About = () => {
-  const highlights = [
+  const highlights = useMemo(() => [
     { icon: GraduationCap, text: portfolioData.about.highlights[0] },
     { icon: Code, text: portfolioData.about.highlights[1] },
     { icon: Award, text: portfolioData.about.highlights[2] },
     { icon: Users, text: portfolioData.about.highlights[3] }
-  ];
+  ], []);
+
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1,
+    triggerOnce: true,
+    rootMargin: '50px',
+  });
 
   return (
     <section id="about" className="relative py-24">
@@ -26,7 +33,11 @@ const About = () => {
             <div className="w-16 h-px bg-foreground mx-auto"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div
+            ref={ref}
+            className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+          >
             {/* Left Column - Main Content */}
             <div className="space-y-8">
               <p className="text-lg font-normal text-muted-foreground leading-relaxed">
@@ -38,7 +49,7 @@ const About = () => {
                 {highlights.map(({ icon: Icon, text }, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg shadow-[0_15px_30px_rgba(10,10,30,0.35)] transition-transform duration-300 hover:-translate-y-1"
+                    className="flex items-center space-x-3 p-4 rounded-2xl border border-white/8 bg-white/3 backdrop-blur-lg shadow-[0_15px_30px_rgba(10,10,30,0.35)] transition-transform duration-300 hover:-translate-y-1"
                   >
                     <div className="p-2 rounded-lg bg-gradient-to-br from-purple-600/70 to-purple-400/60 text-white">
                       <Icon size={18} />
@@ -49,7 +60,7 @@ const About = () => {
               </div>
 
               {/* Education */}
-              <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]">
+              <Card className="bg-white/3 border border-white/8 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-light text-card-foreground mb-4">Education</h3>
                   <div className="space-y-2">
@@ -63,7 +74,7 @@ const About = () => {
 
             {/* Right Column - Coursework */}
             <div>
-              <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]">
+              <Card className="bg-white/3 border border-white/8 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-light text-card-foreground mb-6">Relevant Coursework</h3>
                   <div className="flex flex-wrap gap-2">
@@ -82,11 +93,11 @@ const About = () => {
 
               {/* Experience */}
               {portfolioData.experience && portfolioData.experience.length > 0 && (
-                <Card className="bg-white/5 border border-white/10 backdrop-blur-xl shadow-[0_25px_65px_rgba(8,8,20,0.55)] mt-6">
+                <Card className="bg-white/3 border border-white/8 backdrop-blur-xl shadow-[0_25px_65px_rgba(8,8,20,0.55)] mt-6">
                   <CardContent className="p-6 space-y-6">
                     <h3 className="text-xl font-light text-card-foreground">Experience</h3>
                     {portfolioData.experience.map((exp, index) => (
-                      <div key={index} className="space-y-3 rounded-2xl border border-white/5 bg-white/5/40 p-4">
+                      <div key={index} className="space-y-3 rounded-2xl border border-white/5 bg-white/2 p-4">
                         <div>
                           <h4 className="font-medium text-foreground">{exp.title}</h4>
                           <p className="text-muted-foreground">{exp.company}</p>
@@ -113,4 +124,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default React.memo(About);

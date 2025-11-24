@@ -9,8 +9,8 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver';
 // Memoized Project Card Component
 const UpcomingProjectCard = React.memo(({ project, index, getStatusIcon, getStatusColor }) => {
   const [ref, isVisible] = useIntersectionObserver({
-    threshold: 0.1,
-    triggerOnce: true,
+    threshold: 0.2,
+    triggerOnce: false,
     rootMargin: '50px',
   });
 
@@ -19,7 +19,7 @@ const UpcomingProjectCard = React.memo(({ project, index, getStatusIcon, getStat
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
@@ -75,8 +75,8 @@ const UpcomingProjectCard = React.memo(({ project, index, getStatusIcon, getStat
             <div className="mt-2 w-full bg-secondary rounded-full h-1.5">
               <div
                 className={`h-1.5 rounded-full transition-all duration-300 ${project.status === 'In Development'
-                    ? 'bg-green-500 w-3/5'
-                    : 'bg-blue-500 w-1/12'
+                  ? 'bg-green-500 w-3/5'
+                  : 'bg-blue-500 w-1/12'
                   }`}
               ></div>
             </div>
@@ -107,7 +107,7 @@ const UpcomingProjects = () => {
   }, []);
 
   return (
-    <section id="upcoming" className="relative py-24">
+    <section id="upcoming" className="relative py-16">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b" />
       <div className="max-w-6xl mx-auto px-6">
         <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">

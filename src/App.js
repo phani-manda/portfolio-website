@@ -5,6 +5,7 @@ import LoadingFallback from './components/LoadingFallback';
 
 // Lazy load the Portfolio component
 const Portfolio = lazy(() => import("./components/Portfolio"));
+const ProjectDetails = lazy(() => import("./components/ProjectDetails"));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<Portfolio />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

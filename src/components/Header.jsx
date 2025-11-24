@@ -79,7 +79,7 @@ const Header = () => {
       {/* Desktop Floating Pill Navigation with Glassy Effect */}
       <div className="hidden md:block">
         <motion.div
-          className="fixed left-1/2 top-6 h-[3.25rem] w-[42rem] rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]"
+          className="fixed left-1/2 top-6 h-[3.25rem] w-[42rem] rounded-full border border-white/5 bg-white/1 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]"
           initial={{ y: -100, x: "-50%", opacity: 0 }}
           animate={{ y: 0, x: "-50%", opacity: 1 }}
         ></motion.div>

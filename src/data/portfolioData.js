@@ -31,28 +31,25 @@ export const portfolioData = {
   },
 
   skills: {
-    languages: ["Python", "JavaScript", "C/C++", "SQL"],
-    frontend: ["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
-    backend: ["Node.js", "Express", "FastAPI", "Django"],
-    databases: ["MongoDB", "MySQL"],
-    tools: ["Git", "Docker", "SupaBase", "Firebase", "Vercel", "Postman"],
-    concepts: ["Data Structures", "Algorithms", "RESTful APIs"]
+    languages: ["JavaScript", "Python", "Java", "C++", "SQL"],
+    soft: ["Communication", "Leadership", "Problem Solving", "Team Collaboration", "Time Management", "Adaptability"],
+    frontend: ["React", "HTML", "CSS", "Tailwind CSS", "Redux"],
+    backend: ["Node.js", "Express", "REST APIs"],
+    databases: ["MongoDB", "PostgreSQL", "MySQL"],
+    tools: ["Git", "GitHub", "VS Code", "Postman", "Vercel", "Render"]
   },
 
   projects: [
     {
       id: 1,
-      title: "ChatX - A Real-Time Chat Application",
-      description: "A real time chat application using web sockets for instant communication between users. supports one on one and group chats.",
+      title: "ChatX - Real Time Chat Application",
+      description: "A real time chat application using web sockets for instant communication between users. Supports one on one and group chats.",
       tech: ["React", "Node.js", "Express", "Socket.io", "MongoDB"],
       features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
       github: "https://github.com/phani-manda/chatX",
       live: "https://chatx-zydfu.sevalla.app/",
-      // Use a web-friendly path (public folder root) to avoid backslash escapes
-
       image: "/image.jpg"
     },
-
     {
       id: 2,
       title: "Resumo - AI powered resume optimizer",
@@ -61,13 +58,10 @@ export const portfolioData = {
       features: ["AI powered resume optimizer", "Keywords generation based on job description", "Personalized AI chat bot"],
       github: "https://github.com/phani-manda/resumo-ATS",
       live: "https://resumo-ats.vercel.app/",
-
       image: "/resumo.png"
-
-
     },
     {
-      id: 2,
+      id: 3,
       title: "Dev-Portfolio",
       description: "A personal portfolio website to showcase my skills and projects. Built with React and Tailwind CSS, and designed to be clean, modern, and easy to navigate.",
       tech: ["React", "Tailwind CSS", "Shadcn/ui"],

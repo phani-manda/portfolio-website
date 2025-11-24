@@ -31,10 +31,10 @@ export const portfolioData = {
   },
 
   skills: {
-    languages: [ "Python", "JavaScript", "C/C++", "SQL"],
+    languages: ["Python", "JavaScript", "C/C++", "SQL"],
     frontend: ["React", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
     backend: ["Node.js", "Express", "FastAPI", "Django"],
-    databases: [ "MongoDB", "MySQL"],
+    databases: ["MongoDB", "MySQL"],
     tools: ["Git", "Docker", "SupaBase", "Firebase", "Vercel", "Postman"],
     concepts: ["Data Structures", "Algorithms", "RESTful APIs"]
   },
@@ -43,25 +43,27 @@ export const portfolioData = {
     {
       id: 1,
       title: "ChatX - A Real-Time Chat Application",
+      category: "Web",
       description: "A real time chat application using web sockets for instant communication between users. supports one on one and group chats.",
       tech: ["React", "Node.js", "Express", "Socket.io", "MongoDB"],
       features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
       github: "https://github.com/phani-manda/chatX",
       live: "https://chatx-zydfu.sevalla.app/",
-  // Use a web-friendly path (public folder root) to avoid backslash escapes
-  image: "/image.jpg"
+      // Use a web-friendly path (public folder root) to avoid backslash escapes
+      image: "/image.jpg"
     },
 
     {
       id: 2,
       title: "Resumo - AI powered resume optimizer",
+      category: "AI",
       description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
-      tech: ["React", "Node.js", "Express", "Gemini API", "PostgreSQL", "Prisma", "Vercel", "Render","Tailwind CSS"],
+      tech: ["React", "Node.js", "Express", "Gemini API", "PostgreSQL", "Prisma", "Vercel", "Render", "Tailwind CSS"],
       features: ["AI powered resume optimizer", "Keywords generation based on job description", "Personalized AI chat bot"],
       github: "https://github.com/phani-manda/resumo-ATS",
       live: "https://resumo-ats.vercel.app/",
-  // Use a web-friendly path (public folder root) to avoid backslash escapes
-  image: "/resumo.png"
+      // Use a web-friendly path (public folder root) to avoid backslash escapes
+      image: "/resumo.png"
     }
   ],
 

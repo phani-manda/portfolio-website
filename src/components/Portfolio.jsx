@@ -4,33 +4,38 @@ import Hero from './Hero';
 import About from './About';
 import Skills from './Skills';
 import Projects from './Projects';
-import UpcomingProjects from './UpcomingProjects';
 import Contact from './Contact';
 import Footer from './Footer';
-import Silk from './Silk';
+import DotGrid from './DotGrid';
+import SEO from './SEO';
 
 const Portfolio = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      <SEO />
       <Header />
       <div className="relative isolate">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <Silk
-            className="w-full h-full"
-            speed={2}
-            scale={1.8}
-            color="#8B5CF6"
-            noiseIntensity={1.0}
-            rotation={0.45}
+        {/* Full screen fixed DotGrid background */}
+        <div className="fixed inset-0 -z-10 h-full w-full">
+          <DotGrid
+            dotSize={2}
+            gap={20}
+            baseColor="#333"
+            activeColor="#5227FF"
+            proximity={200}
+            shockRadius={100}
+            shockStrength={15}
+            resistance={200}
+            returnDuration={2}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background pointer-events-none" />
+          <div className="absolute inset-0 bg-background/30 pointer-events-none" />
         </div>
-        <main className="relative z-10 flex flex-col gap-16 pt-28">
+
+        <main className="relative z-10 flex flex-col gap-8">
           <Hero />
           <About />
           <Skills />
           <Projects />
-          <UpcomingProjects />
           <Contact />
         </main>
         <Footer />

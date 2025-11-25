@@ -106,11 +106,11 @@ export default function Skills() {
           {/* 1. Technical Skills (Languages) */}
           <SkillSection title="Technical Skills" skills={languages} />
 
-          {/* 2. Soft Skills */}
-          <SkillSection title="Soft Skills" skills={soft} delay={0.2} />
+          {/* 2. Technologies Known */}
+          <SkillSection title="Technologies Known" skills={uniqueTechnologies} delay={0.2} />
 
-          {/* 3. Technologies Known */}
-          <SkillSection title="Technologies Known" skills={uniqueTechnologies} delay={0.4} />
+          {/* 3. Soft Skills */}
+          <SkillSection title="Soft Skills" skills={soft} delay={0.4} />
         </div>
       </div>
     </section>

@@ -31,12 +31,12 @@ export const portfolioData = {
   },
 
   skills: {
-    languages: ["JavaScript", "Python", "Java", "C++", "SQL"],
-    soft: ["Communication", "Leadership", "Problem Solving", "Team Collaboration", "Time Management", "Adaptability"],
-    frontend: ["React", "HTML", "CSS", "Tailwind CSS", "Redux"],
-    backend: ["Node.js", "Express", "REST APIs"],
-    databases: ["MongoDB", "PostgreSQL", "MySQL"],
-    tools: ["Git", "GitHub", "VS Code", "Postman", "Vercel", "Render"]
+    languages: ["Python", "JavaScript", "TypeScript", "C++", "SQL"],
+    frontend: ["React", "Nextjs", "HTML5", "CSS3", "Tailwind CSS", "Redux"],
+    backend: ["Node.js", "Express"],
+    databases: ["MongoDB", "MySQL", "PostgreSQL"],
+    tools: ["Git", "GitHub", "VS Code", "Docker", "Firebase", "Vercel", "Postman"],
+    soft: ["Communication", "Leadership", "Problem Solving", "Team Collaboration", "Time Management", "Adaptability"]
   },
 
   projects: [

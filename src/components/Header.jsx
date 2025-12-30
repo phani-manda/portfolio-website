@@ -1,28 +1,23 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion } from "framer-motion";
+import { portfolioData } from '../data';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home'); // Default to home
+  const [activeSection, setActiveSection] = useState('home');
   const [timeOfLastClick, setTimeOfLastClick] = useState(0);
 
-  // Auto-update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      // Don't update if user recently clicked (within 1 second)
-      if (Date.now() - timeOfLastClick < 1000) {
-        return;
-      }
+      if (Date.now() - timeOfLastClick < 1000) return;
 
-      // If at top of page, set to home
       if (window.scrollY < 200) {
         setActiveSection('home');
         return;
       }
 
       const sections = ['about', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 200; // Offset for better UX
+      const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -33,7 +28,6 @@ const Header = () => {
       }
     };
 
-    // Throttle scroll event for better performance
     let timeoutId;
     const throttledScroll = () => {
       if (timeoutId) return;
@@ -44,7 +38,7 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', throttledScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', throttledScroll);
@@ -67,7 +61,6 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
     { label: 'Skills', id: 'skills' },
     { label: 'Projects', id: 'projects' },
@@ -75,26 +68,32 @@ const Header = () => {
   ];
 
   return (
-    <header className="relative z-[999]">
-      {/* Desktop Floating Pill Navigation with Glassy Effect */}
-      <div className="hidden md:block">
-        <motion.div
-          className="fixed left-1/2 top-6 h-[3.25rem] w-[42rem] rounded-full border border-white/5 bg-white/1 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.5)]"
-          initial={{ y: -100, x: "-50%", opacity: 0 }}
-          animate={{ y: 0, x: "-50%", opacity: 1 }}
-        ></motion.div>
+    <header className="fixed top-0 left-0 right-0 z-[999]">
+      {/* Water drop / glass morphism background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/60 backdrop-blur-md border-b border-[#49108b]/10 shadow-[0_4px_30px_rgba(126,48,225,0.1)]" />
+      
+      <div className="relative max-w-2xl mx-auto px-6">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center justify-between h-16">
+          {/* Logo/Name */}
+          <button
+            onClick={() => scrollToSection('home')}
+            className="font-['Space_Mono',monospace] font-bold text-[#49108b] text-base tracking-tight hover:text-[#7e30e1] transition-colors duration-200"
+          >
+            {portfolioData.personal.name.split(' ')[0].toLowerCase()}
+            <span className="text-[#7e30e1]">.</span>
+          </button>
 
-        <nav className="fixed left-1/2 top-[1.7rem] flex h-[initial] -translate-x-1/2 py-0">
-          <ul className="flex w-[initial] flex-nowrap items-center justify-center gap-5 text-[0.9rem] font-medium transition-colors">
+          {/* Nav Links */}
+          <ul className="flex items-center gap-8">
             {navItems.map((link) => (
-              <motion.li
-                className="relative flex h-3/4 items-center justify-center text-foreground"
-                key={link.id}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-              >
+              <li key={link.id}>
                 <a
-                  className={`flex w-full items-center justify-center px-3 py-3 uppercase transition hover:text-purple-400 ${activeSection === link.id ? 'text-white' : ''}`}
+                  className={`relative text-[13px] font-medium font-['Inter',sans-serif] tracking-wide transition-all duration-200 py-1 ${
+                    activeSection === link.id
+                      ? 'text-[#7e30e1]'
+                      : 'text-[#49108b]/70 hover:text-[#7e30e1]'
+                  }`}
                   href={`#${link.id}`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -102,47 +101,49 @@ const Header = () => {
                   }}
                 >
                   {link.label}
-
-                  {link.id === activeSection && (
-                    <motion.span
-                      className="absolute inset-0 -z-10 rounded-full bg-purple-300 dark:bg-purple-600"
-                      layoutId="activeSection"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    ></motion.span>
+                  {activeSection === link.id && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#7e30e1] rounded-full" />
                   )}
                 </a>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </nav>
+
+        {/* Mobile Navigation */}
+        <div className="flex md:hidden items-center justify-between h-14">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="font-['Space_Mono',monospace] font-bold text-[#49108b] text-base tracking-tight"
+          >
+            {portfolioData.personal.name.split(' ')[0].toLowerCase()}
+            <span className="text-[#7e30e1]">.</span>
+          </button>
+          <button
+            className="p-2.5 rounded-lg bg-white/80 border-2 border-[#49108b] shadow-[2px_2px_0px_0px_#49108b] text-[#49108b] hover:bg-[#7e30e1] hover:text-white transition-colors duration-200"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu Button */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-6 py-4 md:hidden">
-        <button
-          className="pointer-events-auto p-2 rounded-md bg-white/5 backdrop-blur-xl border border-white/10"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[70px] z-40 md:hidden border-t border-white/10 px-6 pb-6 bg-background/95 backdrop-blur-xl shadow-xl">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="block w-full text-left py-3 text-base font-normal text-foreground/90 hover:text-purple-400 transition-colors"
-            >
-              {item.label}
-            </button>
-          ))}
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-b-2 border-[#49108b] shadow-[0_4px_20px_rgba(126,48,225,0.15)]">
+          <div className="max-w-2xl mx-auto px-6 py-4">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`block w-full text-left py-3 text-[15px] font-medium font-['Inter',sans-serif] transition-colors border-b border-[#49108b]/10 last:border-0 ${
+                  activeSection === item.id ? 'text-[#7e30e1]' : 'text-[#49108b] hover:text-[#7e30e1]'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </header>

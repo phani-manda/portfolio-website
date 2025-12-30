@@ -11,35 +11,31 @@ import SEO from './SEO';
 
 const Portfolio = () => {
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-[#f3f8ff]">
       <SEO />
-      <Header />
-      <div className="relative isolate">
-        {/* Full screen fixed DotGrid background */}
-        <div className="fixed inset-0 -z-10 h-full w-full">
-          <DotGrid
-            dotSize={2}
-            gap={20}
-            baseColor="#333"
-            activeColor="#5227FF"
-            proximity={200}
-            shockRadius={100}
-            shockStrength={15}
-            resistance={200}
-            returnDuration={2}
-          />
-          <div className="absolute inset-0 bg-background/30 pointer-events-none" />
-        </div>
-
-        <main className="relative z-10 flex flex-col gap-8">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
+      {/* DotGrid background with cursor animation */}
+      <div className="fixed inset-0 z-0 h-screen w-screen overflow-hidden">
+        <DotGrid
+          dotSize={3}
+          gap={20}
+          baseColor="#a78bfa"
+          activeColor="#7e30e1"
+          proximity={200}
+          shockRadius={120}
+          shockStrength={15}
+          resistance={200}
+          returnDuration={1.5}
+        />
       </div>
+      <Header />
+      <main className="relative z-10 flex flex-col">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

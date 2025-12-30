@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -28,52 +28,45 @@ const ProjectCard = React.memo(({ project, index }) => {
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <Card
-        className="bg-background border border-white/10 shadow-lg transition-all duration-500 group overflow-hidden h-full flex flex-col cursor-pointer"
+        className="transition-all duration-200 group overflow-hidden cursor-pointer bg-white border-2 border-[#49108b] rounded-xl shadow-[2px_2px_0px_0px_#49108b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b]"
         onClick={handleCardClick}
       >
-        <CardContent className="p-0 flex flex-col h-full">
-          {/* Project Image */}
-          <div className="relative overflow-hidden h-64 w-full">
-            <LazyImage
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              rootMargin="100px"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <span className="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full border border-white/20 font-medium">
-                View Details
-              </span>
+        <CardContent className="p-0">
+          <div className="flex gap-4 p-4">
+            {/* Project Thumbnail */}
+            <div className="relative overflow-hidden w-20 h-20 rounded-lg border-2 border-[#49108b] flex-shrink-0">
+              <LazyImage
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                rootMargin="100px"
+              />
             </div>
-          </div>
 
-          {/* Project Content */}
-          <div className="p-6 flex flex-col flex-grow">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-2xl font-light text-card-foreground group-hover:text-purple-400 transition-colors duration-200">
+            {/* Project Content */}
+            <div className="flex-1 min-w-0">
+              <h3 className="text-[14px] font-bold text-[#49108b] group-hover:text-[#7e30e1] transition-colors duration-200 font-['Space_Mono',monospace] truncate">
                 {project.title}
               </h3>
-            </div>
-
-            <p className="text-muted-foreground line-clamp-2 mb-6 flex-grow">
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.slice(0, 3).map((tech, techIndex) => (
-                <Badge
-                  key={techIndex}
-                  variant="secondary"
-                  className="bg-secondary text-secondary-foreground"
-                >
-                  {tech}
-                </Badge>
-              ))}
-              {project.tech.length > 3 && (
-                <Badge variant="secondary" className="bg-secondary text-secondary-foreground">
-                  +{project.tech.length - 3}
-                </Badge>
-              )}
+              <p className="text-[13px] text-[#49108b]/70 line-clamp-2 font-['Inter',sans-serif] leading-relaxed mt-1">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {project.tech.slice(0, 3).map((tech, techIndex) => (
+                  <Badge
+                    key={techIndex}
+                    variant="secondary"
+                    className="bg-[#e26ee5]/20 text-[#7e30e1] border border-[#49108b] rounded-lg text-[11px] py-0.5 px-2 font-['Inter',sans-serif] font-medium"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+                {project.tech.length > 3 && (
+                  <Badge variant="secondary" className="bg-[#e26ee5]/20 text-[#7e30e1] border border-[#49108b] rounded-lg text-[11px] py-0.5 px-2 font-['Inter',sans-serif] font-medium">
+                    +{project.tech.length - 3}
+                  </Badge>
+                )}
+              </div>
             </div>
           </div>
         </CardContent>
@@ -112,30 +105,30 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="px-6 py-10 sm:px-10 lg:px-14 border border-white/10 rounded-3xl bg-background/50">
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="p-8 border-2 border-[#49108b] rounded-xl bg-white shadow-[4px_4px_0px_0px_#49108b]">
           {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
+          <div className="mb-8">
+            <h2 className="text-xl font-bold tracking-tight text-[#49108b] mb-2 font-['Space_Mono',monospace]">
               Featured Projects
             </h2>
-            <div className="w-16 h-px bg-foreground mx-auto mb-4"></div>
-            <p className="text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              A selection of projects that showcase my technical abilities and problem-solving approach
+            <div className="w-12 h-1 bg-[#7e30e1] mb-4 rounded-full"></div>
+            <p className="text-[13px] font-normal text-[#49108b]/70 leading-relaxed font-['Inter',sans-serif]">
+              A selection of projects showcasing my technical abilities
             </p>
           </div>
 
           {/* Category Filter */}
           {categories.length > 1 && (
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <div className="flex flex-wrap gap-2 mb-6">
               {categories.map(category => (
                 <Button
                   key={category}
                   variant={activeCategory === category ? "default" : "outline"}
                   onClick={() => setActiveCategory(category)}
-                  className={`rounded-full px-6 transition-all duration-300 ${activeCategory === category
-                    ? 'bg-purple-600 hover:bg-purple-700 text-white border-transparent'
-                    : 'border-white/10 hover:border-purple-500/50 hover:text-purple-400'
+                  className={`rounded-md text-xs py-1 px-3 transition-all duration-200 border-2 border-[#49108b] font-['Inter',sans-serif] font-semibold ${activeCategory === category
+                    ? 'bg-[#7e30e1] text-white shadow-[2px_2px_0px_0px_#49108b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b]'
+                    : 'bg-white text-[#7e30e1] shadow-[2px_2px_0px_0px_#49108b] hover:bg-[#e26ee5] hover:text-white hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b]'
                     }`}
                 >
                   {category}
@@ -144,8 +137,8 @@ const Projects = () => {
             </div>
           )}
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Projects - Single Column */}
+          <div className="space-y-4">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
@@ -153,25 +146,24 @@ const Projects = () => {
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No projects found in this category.</p>
+            <div className="text-center py-8">
+              <p className="text-xs text-[#49108b]/80 font-['Inter',sans-serif]">No projects found in this category.</p>
             </div>
           )}
 
           {/* More Projects CTA */}
-          <div className="text-center mt-16">
-            <Card className="bg-background border border-white/10 shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-light text-card-foreground mb-4">
-                  More Projects on GitHub
+          <div className="mt-8">
+            <Card className="bg-[#f3f8ff] border-2 border-[#49108b] rounded-xl shadow-[2px_2px_0px_0px_#49108b]">
+              <CardContent className="p-5 text-center">
+                <h3 className="text-[14px] font-bold text-[#49108b] mb-2 font-['Space_Mono',monospace]">
+                  More on GitHub
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  These are just a few highlights. Check out my GitHub for more projects,
-                  contributions to open-source, and experimental code.
+                <p className="text-[13px] text-[#49108b]/70 mb-4 leading-relaxed font-['Inter',sans-serif]">
+                  Check out my GitHub for more projects and open-source contributions.
                 </p>
                 <Button
                   variant="outline"
-                  className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white transition-all duration-200"
+                  className="bg-white border-2 border-[#49108b] text-[#7e30e1] rounded-lg shadow-[2px_2px_0px_0px_#49108b] hover:bg-[#7e30e1] hover:text-white hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200 font-['Inter',sans-serif] font-semibold text-[13px] py-2 px-4"
                   onClick={handleGithubClick}
                 >
                   <Github className="w-4 h-4 mr-2" />

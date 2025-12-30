@@ -1,7 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { portfolioData } from '../data';
-import GlassPanel from './GlassPanel';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,64 +16,49 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative py-16">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b" />
-      <div className="max-w-6xl mx-auto px-6">
-        <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+    <footer className="relative py-12">
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="p-6 bg-white border-2 border-[#49108b] rounded-xl shadow-[4px_4px_0px_0px_#49108b]">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
             {/* Left Side */}
-            <div>
+            <div className="text-center sm:text-left">
               <button
                 onClick={scrollToTop}
-                className="text-2xl font-light tracking-tight text-foreground hover:text-muted-foreground transition-colors duration-200 mb-4"
+                className="text-lg font-bold tracking-tight text-[#49108b] hover:text-[#7e30e1] transition-colors duration-200 font-['Space_Mono',monospace]"
               >
                 {portfolioData.personal.name}
               </button>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                Computer Science student passionate about building innovative software solutions.
-                Always excited to take on new challenges and learn cutting-edge technologies.
-              </p>
-              <p className="text-muted-foreground/80 text-xs">
-                Available for internships and full-time SDE opportunities.
-              </p>
-            </div>
-
-            {/* Right Side */}
-            <div className="md:text-right">
-              <div className="flex md:justify-end space-x-4 mb-6">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg border border-white/8 bg-white/3 hover:bg-white/8 hover:scale-110 transition-all duration-200 text-foreground"
-                    aria-label={label}
-                  >
-                    <Icon size={18} />
-                  </a>
-                ))}
-              </div>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-[13px] text-[#49108b]/60 font-['Inter',sans-serif] mt-1">
                 {portfolioData.personal.location}
               </p>
             </div>
-          </div>
 
-          {/* Bottom Border */}
-          <div className="border-t border-white/10 mt-8 pt-6">
-            <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-              <p className="flex items-center">
-                © {currentYear} {portfolioData.personal.name}. Built with
-                <Heart size={14} className="mx-1 text-red-500" />
-                using React & Tailwind CSS.
-              </p>
-              <p className="mt-2 md:mt-0">
-                Designed for performance and accessibility.
-              </p>
+            {/* Social Links */}
+            <div className="flex space-x-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg border-2 border-[#49108b] bg-white text-[#49108b] shadow-[2px_2px_0px_0px_#49108b] hover:bg-[#7e30e1] hover:text-white hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200"
+                  aria-label={label}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
-        </GlassPanel>
+
+          {/* Bottom */}
+          <div className="border-t border-[#49108b]/20 mt-5 pt-5">
+            <p className="text-[11px] text-[#49108b]/60 font-['Inter',sans-serif] text-center flex items-center justify-center gap-1">
+              © {currentYear} {portfolioData.personal.name}. Built with
+              <Heart size={12} className="text-[#e26ee5]" />
+              using React & Tailwind CSS
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

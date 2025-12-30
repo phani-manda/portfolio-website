@@ -3,7 +3,6 @@ import { Clock, Zap, Calendar } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { portfolioData } from '../data';
-import GlassPanel from './GlassPanel';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 // Memoized Project Card Component
@@ -23,42 +22,40 @@ const UpcomingProjectCard = React.memo(({ project, index, getStatusIcon, getStat
         }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <Card className="bg-white/3 border border-white/8 backdrop-blur-xl shadow-[0_20px_60px_rgba(8,8,20,0.45)] hover:shadow-[0_25px_70px_rgba(10,10,30,0.65)] transition-all duration-300 group">
-        <CardContent className="p-8">
-          {/* Status Badge */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2">
-              <Badge className={`${getStatusColor(project.status)} font-normal`}>
-                <StatusIcon size={12} className="mr-1" />
-                {project.status ?? 'Upcoming'}
-              </Badge>
-            </div>
+      <Card className="bg-white border-2 border-[#49108b] rounded-lg shadow-[2px_2px_0px_0px_#49108b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200 group">
+        <CardContent className="p-4">
+          {/* Status Badge & Timeline */}
+          <div className="flex items-center justify-between mb-3">
+            <Badge className={`${getStatusColor(project.status)} font-semibold border rounded-md text-[10px] py-0.5 px-2 font-['Inter',sans-serif]`}>
+              <StatusIcon size={10} className="mr-1" />
+              {project.status ?? 'Upcoming'}
+            </Badge>
             {project.timeline ? (
-              <span className="text-sm text-muted-foreground font-normal">
+              <span className="text-xs text-[#49108b]/60 font-medium font-['Inter',sans-serif] uppercase tracking-wider">
                 {project.timeline}
               </span>
             ) : <span />}
           </div>
 
           {/* Project Details */}
-          <div className="space-y-4">
+          <div className="space-y-2">
             {project.title ? (
-              <h3 className="text-2xl font-light text-card-foreground group-hover:text-purple-400 transition-colors duration-200">
+              <h3 className="text-sm font-bold text-[#49108b] group-hover:text-[#7e30e1] transition-colors duration-200 font-['Space_Mono',monospace]">
                 {project.title}
               </h3>
             ) : null}
 
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-xs text-[#49108b]/80 leading-relaxed font-['Inter',sans-serif]">
               {project.description ?? 'Details coming soon.'}
             </p>
 
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1">
               {(project.tech ?? []).map((tech, techIndex) => (
                 <Badge
                   key={techIndex}
                   variant="outline"
-                  className="border-border text-muted-foreground hover:border-purple-500 hover:text-purple-400 hover:bg-purple-900/20 transition-colors duration-200"
+                  className="border border-[#49108b] text-[#7e30e1] bg-white rounded-md text-[10px] py-0 px-1.5 hover:bg-[#e26ee5] hover:text-white transition-all duration-200 font-['Inter',sans-serif]"
                 >
                   {tech}
                 </Badge>
@@ -67,16 +64,16 @@ const UpcomingProjectCard = React.memo(({ project, index, getStatusIcon, getStat
           </div>
 
           {/* Progress Indicator */}
-          <div className="mt-6 pt-4 border-t border-border">
-            <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <div className="mt-3 pt-3 border-t border-[#49108b]/20">
+            <div className="flex items-center justify-between text-xs text-[#49108b]/60 font-['Inter',sans-serif]">
               <span>Progress</span>
               <span>{project.status === 'In Development' ? '60%' : '10%'}</span>
             </div>
-            <div className="mt-2 w-full bg-secondary rounded-full h-1.5">
+            <div className="mt-1.5 w-full bg-[#f3f8ff] border border-[#49108b]/30 rounded h-1.5">
               <div
-                className={`h-1.5 rounded-full transition-all duration-300 ${project.status === 'In Development'
-                  ? 'bg-green-500 w-3/5'
-                  : 'bg-blue-500 w-1/12'
+                className={`h-1.5 rounded transition-all duration-300 ${project.status === 'In Development'
+                  ? 'bg-[#7e30e1] w-3/5'
+                  : 'bg-[#e26ee5] w-1/12'
                   }`}
               ></div>
             </div>
@@ -100,30 +97,27 @@ const UpcomingProjects = () => {
 
   const getStatusColor = useMemo(() => (status) => {
     switch (status) {
-      case 'In Development': return 'bg-green-900/30 text-green-400 border-green-800';
-      case 'Planning': return 'bg-blue-900/30 text-blue-400 border-blue-800';
-      default: return 'bg-secondary text-secondary-foreground border-border';
+      case 'In Development': return 'bg-[#7e30e1] text-white border-[#49108b]';
+      case 'Planning': return 'bg-[#e26ee5] text-white border-[#49108b]';
+      default: return 'bg-white text-[#49108b] border-[#49108b]';
     }
   }, []);
 
-  return (
-    <section id="upcoming" className="relative py-16">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b" />
-      <div className="max-w-6xl mx-auto px-6">
-        <GlassPanel className="px-6 py-10 sm:px-10 lg:px-14">
+  return (\n    <section id=\"upcoming\" className=\"relative py-12\">\n      <div className=\"max-w-2xl mx-auto px-6\">", "oldString": "  return (\n    <section id=\"upcoming\" className=\"relative py-12 bg-[#f3f8ff]\">\n      <div className=\"absolute inset-0 -z-10\" />\n      <div className=\"max-w-2xl mx-auto px-6\">
+        <div className="p-6 bg-white border-2 border-[#49108b] rounded-lg shadow-[3px_3px_0px_0px_#49108b]">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold tracking-tight text-[#49108b] mb-2 font-['Space_Mono',monospace]">
               Upcoming Projects
             </h2>
-            <div className="w-16 h-px bg-foreground mx-auto mb-4"></div>
-            <p className="text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              Innovative projects in development that will demonstrate advanced technical skills
+            <div className="w-10 h-0.5 bg-[#7e30e1] mb-3 rounded-lg"></div>
+            <p className="text-sm font-normal text-[#49108b]/80 leading-7 font-['Inter',sans-serif]">
+              Projects in development demonstrating advanced skills
             </p>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Projects - Single Column */}
+          <div className="space-y-3">
             {(Array.isArray(portfolioData.upcomingProjects) ? portfolioData.upcomingProjects : []).map((project, index) => (
               <UpcomingProjectCard
                 key={project.id ?? index}
@@ -136,20 +130,19 @@ const UpcomingProjects = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <Card className="bg-white/3 border border-white/8 backdrop-blur-xl shadow-[0_15px_45px_rgba(8,8,20,0.4)]">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-light text-card-foreground mb-4">
+          <div className="mt-4">
+            <Card className="bg-[#f3f8ff] border-2 border-[#49108b] rounded-lg shadow-[2px_2px_0px_0px_#49108b]">
+              <CardContent className="p-4">
+                <h3 className="text-sm font-bold text-[#49108b] mb-1 font-['Space_Mono',monospace]">
                   Stay Updated
                 </h3>
-                <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Follow my GitHub and LinkedIn to get updates on these projects as they develop.
-                  I regularly share progress, technical challenges, and lessons learned during the development process.
+                <p className="text-xs text-[#49108b]/80 leading-relaxed font-['Inter',sans-serif]">
+                  Follow my GitHub and LinkedIn for updates on these projects.
                 </p>
               </CardContent>
             </Card>
           </div>
-        </GlassPanel>
+        </div>
       </div>
     </section>
   );

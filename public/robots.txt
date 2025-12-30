@@ -1,7 +1,41 @@
+# Robots.txt for phanimanda.live
 # https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers
 User-agent: *
 Allow: /
-Disallow: /static/
 
-# Sitemap
+# Allow Google
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing
+User-agent: Bingbot
+Allow: /
+
+# Allow DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Allow Yahoo
+User-agent: Slurp
+Allow: /
+
+# Allow Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Allow Yandex
+User-agent: Yandex
+Allow: /
+
+# Disallow build/static files (not needed for SEO)
+Disallow: /static/js/
+Disallow: /static/css/
+Disallow: /static/media/
+
+# Crawl delay for politeness
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://www.phanimanda.live/sitemap.xml

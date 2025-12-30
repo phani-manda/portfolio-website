@@ -1,32 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Homepage -->
   <url>
     <loc>https://www.phanimanda.live/</loc>
-    <lastmod>2025-11-25</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.phanimanda.live/og-image.png</image:loc>
+      <image:title>Phani Manda - Full Stack Developer Portfolio</image:title>
+      <image:caption>Professional portfolio showcasing full-stack development projects</image:caption>
+    </image:image>
   </url>
+  
+  <!-- About Section -->
   <url>
     <loc>https://www.phanimanda.live/#about</loc>
-    <lastmod>2025-11-25</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Skills Section -->
   <url>
     <loc>https://www.phanimanda.live/#skills</loc>
-    <lastmod>2025-11-25</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Projects Section -->
   <url>
     <loc>https://www.phanimanda.live/#projects</loc>
-    <lastmod>2025-11-25</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  
+  <!-- Individual Project Pages -->
+  <url>
+    <loc>https://www.phanimanda.live/project/1</loc>
+    <lastmod>2024-12-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.phanimanda.live/chatx.jpg</image:loc>
+      <image:title>ChatX - Real Time Chat Application</image:title>
+      <image:caption>Real time chat application using web sockets</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://www.phanimanda.live/project/2</loc>
+    <lastmod>2024-12-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.phanimanda.live/resumo.png</image:loc>
+      <image:title>Resumo - AI Powered Resume Optimizer</image:title>
+      <image:caption>AI based resume optimizer with keywords generation</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://www.phanimanda.live/project/3</loc>
+    <lastmod>2024-12-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.phanimanda.live/portfolio.png</image:loc>
+      <image:title>Dev-Portfolio</image:title>
+      <image:caption>Personal portfolio website built with React and Tailwind CSS</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Contact Section -->
   <url>
     <loc>https://www.phanimanda.live/#contact</loc>
-    <lastmod>2025-11-25</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

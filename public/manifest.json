@@ -1,25 +1,48 @@
 {
-  "short_name": "Portfolio",
-  "name": "Personal Portfolio Website",
+  "short_name": "Phani Manda",
+  "name": "Phani Manda - Full Stack Developer Portfolio",
+  "description": "Professional portfolio of Phani Manda, a Computer Science student and Full Stack Developer specializing in React, Node.js, and Python.",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "32x32",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "favicon-16x16.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "16x16"
     },
     {
-      "src": "logo512.png",
+      "src": "favicon-32x32.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "32x32"
+    },
+    {
+      "src": "android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#7e30e1",
+  "background_color": "#f3f8ff",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "developer"],
+  "lang": "en-US",
+  "dir": "ltr"
 }

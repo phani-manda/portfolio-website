@@ -1,34 +1,9 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
-import { ChevronDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
+import React, { useCallback, useMemo } from 'react';
+import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { portfolioData } from '../data';
 
 const Hero = () => {
-  const circleRef = useRef(null);
-
-  useEffect(() => {
-    let frameId = null;
-
-    const handleScroll = () => {
-      if (!circleRef.current || frameId) return;
-
-      frameId = requestAnimationFrame(() => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.35;
-        circleRef.current.style.transform = `rotate(${rate}deg)`;
-        frameId = null;
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (frameId) {
-        cancelAnimationFrame(frameId);
-      }
-    };
-  }, []);
-
   const scrollToAbout = useCallback(() => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
@@ -49,108 +24,71 @@ const Hero = () => {
   ], []);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background Circle */}
-      <div
-        ref={circleRef}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-5 pointer-events-none"
-      >
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          <circle
-            cx="100"
-            cy="100"
-            r="80"
-            fill="none"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="0.5"
-            strokeDasharray="5,5"
-          />
-          <circle
-            cx="100"
-            cy="100"
-            r="60"
-            fill="none"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="0.3"
-          />
-          <circle
-            cx="100"
-            cy="100"
-            r="40"
-            fill="none"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="0.2"
-          />
-        </svg>
-      </div>
+    <section id="hero" className="relative pt-28 pb-16 px-5 justify-center">
+      <div className="max-w-2xl mx-auto px-6 w-full">
+        <div className="p-8 bg-white border-2 border-[#49108b] rounded-xl shadow-[4px_4px_0px_0px_#49108b]">
+        {/* Main Hero Card */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          {/* Avatar */}
+          <div className="flex-shrink-0">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl border-2 border-[#49108b] shadow-[4px_4px_0px_0px_#49108b] bg-gradient-to-br from-[#7e30e1] to-[#e26ee5] flex items-center justify-center overflow-hidden">
+              <span className="text-4xl sm:text-5xl font-bold text-white font-['Space_Mono',monospace]">
+                {portfolioData.personal.name.charAt(0)}
+              </span>
+            </div>
+          </div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center z-10 w-full">
+          {/* Text Content */}
+          <div className="flex-1 text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#49108b] font-['Space_Mono',monospace] mb-2 tracking-tight">
+              {portfolioData.personal.name}
+            </h1>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground leading-tight">
-          {portfolioData.personal.name}
-        </h1>
+            <p className="text-sm font-semibold text-[#7e30e1] font-['Inter',sans-serif] mb-3 tracking-wide">
+              {portfolioData.personal.subtitle}
+            </p>
 
-        <p className="text-xl md:text-2xl font-light text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          {portfolioData.personal.subtitle}
-        </p>
+            <p className="text-[13px] text-[#49108b]/70 leading-relaxed font-['Inter',sans-serif] mb-5">
+              {portfolioData.personal.description}
+            </p>
 
-        <p className="text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-          {portfolioData.personal.description}
-        </p>
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-3 justify-center sm:justify-start mb-5">
+              <Button
+                onClick={scrollToAbout}
+                className="bg-[#7e30e1] text-white border-2 border-[#49108b] rounded-lg shadow-[3px_3px_0px_0px_#49108b] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200 font-['Inter',sans-serif] font-semibold text-[13px] py-2 px-4 h-auto"
+              >
+                View My Work
+              </Button>
+              <Button
+                variant="outline"
+                className="bg-white border-2 border-[#49108b] text-[#7e30e1] rounded-lg shadow-[3px_3px_0px_0px_#49108b] hover:bg-[#e26ee5] hover:text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200 font-['Inter',sans-serif] font-semibold text-[13px] py-2 px-4 h-auto"
+                onClick={handleDownloadResume}
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Resume
+              </Button>
+            </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-          <Button
-            onClick={scrollToAbout}
-            className="bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
-            size="lg"
-          >
-            View My Work
-          </Button>
-          <Button
-            variant="outline"
-            className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white hover:scale-105 transition-all duration-200"
-            size="lg"
-            onClick={handleDownloadResume}
-          >
-            <FileText className="w-4 h-4 mr-2" />
-            Download Resume
-          </Button>
+            {/* Social Links */}
+            <div className="flex gap-3 justify-center sm:justify-start">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 bg-white text-[#49108b] border-2 border-[#49108b] rounded-lg shadow-[2px_2px_0px_0px_#49108b] hover:bg-[#7e30e1] hover:text-white hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200"
+                  aria-label={label}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+          </div>
         </div>
-
-        {/* Social Links */}
-        <div className="flex justify-center space-x-6 pt-6">
-          {socialLinks.map(({ icon: Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-foreground hover:text-muted-foreground hover:-translate-y-1 transition-all duration-200"
-              aria-label={label}
-            >
-              <Icon size={24} />
-            </a>
-          ))}
-        </div>
-        {/* Scroll Indicator */}
-        <button
-          onClick={scrollToAbout}
-          className="mt-12 inline-flex animate-bounce"
-        >
-          <ChevronDown size={32} className="text-foreground opacity-60" />
-        </button>
       </div>
-
-      <style>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-      `}</style>
     </section>
   );
 };

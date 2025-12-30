@@ -2,9 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#7c3aed" />
+    
+    <!-- Favicon Configuration - Multi-device Support -->
+    <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/android-chrome-512x512.png" />
+    <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#7e30e1" />
+    <meta name="msapplication-TileColor" content="#7e30e1" />
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/mstile-144x144.png" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="theme-color" content="#7e30e1" />
+    <meta name="color-scheme" content="light" />
+    
+    <!-- Search Engine Verification (Add your verification codes here) -->
+    <!-- Google Search Console: Get code from https://search.google.com/search-console -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+    <!-- Bing Webmaster Tools: Get code from https://www.bing.com/webmasters -->
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
+    <!-- Yandex Webmaster: Get code from https://webmaster.yandex.com -->
+    <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
     
     <!-- Primary Meta Tags -->
     <title>Phani Manda - Full Stack Developer | React, Node.js, Python Portfolio</title>
@@ -13,26 +33,51 @@
       name="description"
       content="Phani Manda is a Computer Science student and aspiring software engineer skilled in React, Node.js, Python, MongoDB, and full-stack web development. Explore projects including real-time chat applications and AI-powered tools."
     />
-    <meta name="keywords" content="Phani Manda, full stack developer, software engineer, React developer, Node.js, Python, MongoDB, portfolio, computer science student, web developer, Hyderabad developer, ChatX, real-time chat app, AI resume optimizer" />
+    <meta name="keywords" content="Phani Manda, phani manda, phanimanda, full stack developer, software engineer, React developer, Node.js developer, Python developer, MongoDB, portfolio, computer science student, web developer, Hyderabad developer, India developer, ChatX, Resumo, AI resume optimizer, real-time chat app, MERN stack, frontend developer, backend developer, JavaScript developer, TypeScript, CMR College" />
     <meta name="author" content="Phani Manda" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
     <link rel="canonical" href="https://www.phanimanda.live/" />
+    
+    <!-- Language and Region -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="IN-TG" />
+    <meta name="geo.placename" content="Hyderabad, Telangana, India" />
+    <meta name="geo.position" content="17.385044;78.486671" />
+    <meta name="ICBM" content="17.385044, 78.486671" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
     
     <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.phanimanda.live/" />
     <meta property="og:title" content="Phani Manda - Full Stack Developer Portfolio" />
     <meta property="og:description" content="Explore the portfolio of Phani Manda, a Computer Science student specializing in full-stack development with React, Node.js, and Python. View projects, skills, and connect for opportunities." />
-    <meta property="og:image" content="https://www.phanimanda.live/image.png" />
+    <meta property="og:image" content="https://www.phanimanda.live/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Phani Manda - Full Stack Developer Portfolio" />
     <meta property="og:site_name" content="Phani Manda Portfolio" />
     <meta property="og:locale" content="en_US" />
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@phanimanda" />
+    <meta name="twitter:creator" content="@phanimanda" />
     <meta name="twitter:url" content="https://www.phanimanda.live/" />
     <meta name="twitter:title" content="Phani Manda - Full Stack Developer Portfolio" />
     <meta name="twitter:description" content="Explore the portfolio of Phani Manda, a Computer Science student specializing in full-stack development with React, Node.js, and Python." />
-    <meta name="twitter:image" content="https://www.phanimanda.live/image.png" />
+    <meta name="twitter:image" content="https://www.phanimanda.live/og-image.png" />
+    <meta name="twitter:image:alt" content="Phani Manda - Full Stack Developer Portfolio" />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -42,18 +87,32 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://www.phanimanda.live/#person",
       "name": "Phani Manda",
+      "givenName": "Phani",
+      "familyName": "Manda",
       "url": "https://www.phanimanda.live/",
-      "image": "https://www.phanimanda.live/image.png",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.phanimanda.live/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
       "sameAs": [
         "https://www.linkedin.com/in/phani-manda-667a002a5/",
         "https://github.com/phani-manda"
       ],
-      "jobTitle": "Computer Science Student",
-      "description": "Aspiring Software Engineer specializing in full-stack development with expertise in React, Node.js, Python, and MongoDB",
+      "jobTitle": "Full Stack Developer",
+      "description": "Computer Science student and aspiring Software Engineer specializing in full-stack development with expertise in React, Node.js, Python, and MongoDB. Building scalable web applications and AI-powered tools.",
       "alumniOf": {
         "@type": "CollegeOrUniversity",
-        "name": "CMR College of Engineering and Technology"
+        "name": "CMR College of Engineering and Technology",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "addressCountry": "India"
+        }
       },
       "address": {
         "@type": "PostalAddress",
@@ -61,31 +120,148 @@
         "addressRegion": "Telangana",
         "addressCountry": "India"
       },
-      "email": "phanimanda8@gmail.com",
+      "email": "mailto:phanimanda8@gmail.com",
       "telephone": "+917075680805",
       "knowsAbout": [
-        "React",
+        "React.js",
         "Node.js",
         "Python",
         "JavaScript",
+        "TypeScript",
         "MongoDB",
+        "PostgreSQL",
         "Full Stack Development",
         "Software Engineering",
-        "Web Development"
-      ]
+        "Web Development",
+        "REST APIs",
+        "Socket.io",
+        "Tailwind CSS",
+        "Git",
+        "Docker"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Full Stack Developer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Hyderabad"
+        },
+        "skills": "React, Node.js, Python, MongoDB, JavaScript, TypeScript"
+      }
     }
     </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Phani Manda Portfolio",
+      "@id": "https://www.phanimanda.live/#website",
+      "name": "Phani Manda - Full Stack Developer Portfolio",
       "url": "https://www.phanimanda.live/",
-      "description": "Professional portfolio showcasing full-stack development projects and technical skills",
+      "description": "Professional portfolio showcasing full-stack development projects, technical skills, and experience of Phani Manda",
+      "inLanguage": "en-US",
       "author": {
         "@type": "Person",
-        "name": "Phani Manda"
+        "@id": "https://www.phanimanda.live/#person"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://www.phanimanda.live/#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.phanimanda.live/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.phanimanda.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://www.phanimanda.live/#about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Skills",
+          "item": "https://www.phanimanda.live/#skills"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Projects",
+          "item": "https://www.phanimanda.live/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Contact",
+          "item": "https://www.phanimanda.live/#contact"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Portfolio Projects",
+      "description": "Full stack development projects by Phani Manda",
+      "itemListElement": [
+        {
+          "@type": "SoftwareApplication",
+          "position": 1,
+          "name": "ChatX - Real Time Chat Application",
+          "description": "A real time chat application using web sockets for instant communication between users",
+          "url": "https://www.phanimanda.live/project/1",
+          "applicationCategory": "WebApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 2,
+          "name": "Resumo - AI Powered Resume Optimizer",
+          "description": "An Open Source AI based resume optimizer with keywords generation based on job description",
+          "url": "https://www.phanimanda.live/project/2",
+          "applicationCategory": "WebApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 3,
+          "name": "Dev-Portfolio",
+          "description": "A personal portfolio website to showcase skills and projects",
+          "url": "https://www.phanimanda.live/project/3",
+          "applicationCategory": "WebApplication",
+          "operatingSystem": "Web Browser",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
     }
     </script>
   </head>

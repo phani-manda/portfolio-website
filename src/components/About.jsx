@@ -21,101 +21,97 @@ const About = () => {
 
   return (
     <section id="about" className="relative py-16">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b" />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="px-6 py-10 sm:px-10 lg:px-14">
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="p-8 bg-white border-2 border-[#49108b] rounded-xl shadow-[4px_4px_0px_0px_#49108b]">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-light tracking-tight text-foreground mb-6">
+          <div className="mb-8">
+            <h2 className="text-xl font-bold tracking-tight text-[#49108b] mb-2 font-['Space_Mono',monospace]">
               About Me
             </h2>
-            <div className="w-16 h-px bg-foreground mx-auto"></div>
+            <div className="w-12 h-1 bg-[#7e30e1] rounded-full"></div>
           </div>
 
           <div
             ref={ref}
-            className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
           >
-            {/* Left Column - Main Content */}
-            <div className="space-y-8">
-              <p className="text-lg font-normal text-muted-foreground leading-relaxed">
-                {portfolioData.about.intro}
-              </p>
+            {/* Intro */}
+            <p className="text-[14px] font-normal text-[#49108b]/80 leading-7 font-['Inter',sans-serif]">
+              {portfolioData.about.intro}
+            </p>
 
-              {/* Highlights Grid */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {highlights.map(({ icon: Icon, text }, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 p-4 rounded-2xl border border-white/10 bg-background hover:border-white/20 transition-transform duration-300 hover:-translate-y-1 shadow-sm"
-                  >
-                    <div className="p-2 rounded-lg bg-secondary text-secondary-foreground">
-                      <Icon size={18} />
+              {/* Highlights */}
+            <div className="space-y-3">
+              {highlights.map(({ icon: Icon, text }, index) => (
+                <div
+                  key={index}
+                  className="flex items-center space-x-4 p-4 rounded-xl border-2 border-[#49108b] bg-white shadow-[2px_2px_0px_0px_#49108b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#49108b] transition-all duration-200"
+                >
+                  <div className="p-2 rounded-lg bg-[#7e30e1] text-white">
+                    <Icon size={16} />
+                  </div>
+                  <span className="text-[13px] font-medium text-[#49108b] font-['Inter',sans-serif]">{text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Education */}
+            <Card className="bg-[#f3f8ff] border-2 border-[#49108b] rounded-xl shadow-[2px_2px_0px_0px_#49108b]">
+              <CardContent className="p-5">
+                <h3 className="text-sm font-bold text-[#49108b] mb-3 font-['Space_Mono',monospace] uppercase tracking-wider">Education</h3>
+                <div className="space-y-1.5">
+                  <h4 className="text-[14px] font-semibold text-[#7e30e1] font-['Inter',sans-serif]">{portfolioData.about.education.degree}</h4>
+                  <p className="text-[13px] text-[#49108b]/80 font-['Inter',sans-serif]">{portfolioData.about.education.university}</p>
+                  <p className="text-xs text-[#49108b]/60 font-['Inter',sans-serif] uppercase tracking-wider">{portfolioData.about.education.graduation}</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Coursework */}
+            <Card className="bg-[#f3f8ff] border-2 border-[#49108b] rounded-xl shadow-[2px_2px_0px_0px_#49108b]">
+              <CardContent className="p-5">
+                <h3 className="text-sm font-bold text-[#49108b] mb-4 font-['Space_Mono',monospace] uppercase tracking-wider">Relevant Coursework</h3>
+                <div className="flex flex-wrap gap-2">
+                  {portfolioData.about.education.coursework.map((course, index) => (
+                    <Badge
+                      key={index}
+                      variant="outline"
+                      className="border-2 border-[#49108b] text-[#7e30e1] bg-white rounded-lg text-xs py-1 px-3 hover:bg-[#e26ee5] hover:text-white transition-all duration-200 font-['Inter',sans-serif] font-medium"
+                    >
+                      {course}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Experience */}
+            {portfolioData.experience && portfolioData.experience.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold text-[#49108b] font-['Space_Mono',monospace] uppercase tracking-wider">Experience</h3>
+                {portfolioData.experience.map((exp, index) => (
+                  <div key={index} className="flex gap-3 p-3 rounded-lg border-2 border-[#49108b] bg-white shadow-[2px_2px_0px_0px_#49108b]">
+                    <div className="w-10 h-10 rounded-md bg-[#7e30e1] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                      {exp.company.charAt(0)}
                     </div>
-                    <span className="text-sm font-normal text-muted-foreground">{text}</span>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-[#7e30e1] font-['Inter',sans-serif]">{exp.title}</h4>
+                      <p className="text-xs text-[#49108b]/80 font-['Inter',sans-serif]">{exp.company}</p>
+                      <p className="text-xs text-[#49108b]/60 font-['Inter',sans-serif] uppercase tracking-wider">{exp.period}</p>
+                      <p className="text-xs text-[#49108b]/80 leading-relaxed font-['Inter',sans-serif] mt-1">{exp.description}</p>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {exp.achievements.map((achievement, i) => (
+                          <Badge key={i} variant="secondary" className="text-[10px] bg-[#7e30e1] text-white border border-[#49108b] rounded-md py-0 px-1.5 font-['Inter',sans-serif]">
+                            {achievement}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
-
-              {/* Education */}
-              <Card className="bg-background border border-white/10 shadow-lg">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-light text-card-foreground mb-4">Education</h3>
-                  <div className="space-y-2">
-                    <h4 className="font-medium text-foreground">{portfolioData.about.education.degree}</h4>
-                    <p className="text-muted-foreground">{portfolioData.about.education.university}</p>
-                    <p className="text-sm text-muted-foreground/80">{portfolioData.about.education.graduation}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Right Column - Coursework */}
-            <div>
-              <Card className="bg-background border border-white/10 shadow-lg">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-light text-card-foreground mb-6">Relevant Coursework</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {portfolioData.about.education.coursework.map((course, index) => (
-                      <Badge
-                        key={index}
-                        variant="outline"
-                        className="border-white/20 text-muted-foreground hover:border-purple-500 hover:text-purple-400 transition-colors duration-200"
-                      >
-                        {course}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Experience */}
-              {portfolioData.experience && portfolioData.experience.length > 0 && (
-                <Card className="bg-background border border-white/10 shadow-lg mt-6">
-                  <CardContent className="p-6 space-y-6">
-                    <h3 className="text-xl font-light text-card-foreground">Experience</h3>
-                    {portfolioData.experience.map((exp, index) => (
-                      <div key={index} className="space-y-3 rounded-2xl border border-white/10 bg-background/50 p-4">
-                        <div>
-                          <h4 className="font-medium text-foreground">{exp.title}</h4>
-                          <p className="text-muted-foreground">{exp.company}</p>
-                          <p className="text-sm text-muted-foreground/80">{exp.period}</p>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {exp.achievements.map((achievement, i) => (
-                            <Badge key={i} variant="secondary" className="text-xs bg-secondary text-secondary-foreground">
-                              {achievement}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </div>

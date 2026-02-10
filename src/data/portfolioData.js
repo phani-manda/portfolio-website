@@ -10,14 +10,14 @@ export const portfolioData = {
     phone: "+91 7075680805",
     location: "Hyderabad, Telangana, India",
     resume: "/resume.pdf",
-    linkedin: "https://www.linkedin.com/in/phani-manda-667a002a5/",
+    linkedin: "https://www.linkedin.com/in/phani-manda/",
     github: "https://github.com/phani-manda",
   },
 
   about: {
     intro: "I'm a passionate Computer Science student with a strong foundation in algorithms, data structures, and full-stack development. My goal is to join a leading tech company where I can contribute to innovative projects and grow as a software engineer.",
     highlights: [
-      "7.2 GPA in Computer Science",
+      "7.31 GPA in Computer Science",
       "Active contributor to open-source projects",
       "Strong problem-solving skills",
       "Team collaboration experience"
@@ -37,21 +37,12 @@ export const portfolioData = {
     databases: ["MongoDB", "MySQL", "PostgreSQL"],
     tools: ["Git", "GitHub", "VS Code", "Docker", "Firebase", "Vercel", "Postman"],
     soft: ["Communication", "Leadership", "Problem Solving", "Team Collaboration", "Time Management", "Adaptability"]
-  },
+  }, 
 
   projects: [
+    
     {
       id: 1,
-      title: "ChatX - Real Time Chat Application",
-      description: "A real time chat application using web sockets for instant communication between users. Supports one on one and group chats.",
-      tech: ["React", "Node.js", "Express", "Socket.io", "MongoDB"],
-      features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
-      github: "https://github.com/phani-manda/chatX",
-      live: "https://chatx-zydfu.sevalla.app/",
-      image: "/chatx.jpg"
-    },
-    {
-      id: 2,
       title: "Resumo - AI powered resume optimizer",
       description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
       tech: ["React", "Node.js", "Express", "Gemini API", "PostgreSQL", "Prisma", "Vercel", "Render", "Tailwind CSS"],
@@ -60,15 +51,36 @@ export const portfolioData = {
       live: "https://resumo-ats.vercel.app/",
       image: "/resumo.png"
     },
+    
     {
-      id: 3,
-      title: "Dev-Portfolio",
-      description: "A personal portfolio website to showcase my skills and projects. Built with React and Tailwind CSS, and designed to be clean, modern, and easy to navigate.",
+      id: 2,
+      title: "Cortex - The Second Brain",
+      description: "An AI based note maker with built in summarizer, tagger and organizer. An intelligent note taking application. Built with React and Tailwind CSS, and designed to be clean, modern, and easy to navigate.",
       tech: ["React", "Tailwind CSS", "Shadcn/ui"],
       features: ["Responsive design", "Modern UI", "Easy to customize"],
-      github: "https://github.com/phani-manda/dev-portfolio",
-      live: "https://dev-portfolio-lilac.vercel.app/",
-      image: "/portfolio.png"
+      github: "https://github.com/phani-manda/The-cortex",
+      live: "https://the-cortex.vercel.app/",
+      image: "/cortex.png"
+    },
+    {
+      id: 3,
+      title: "Resumate - AI powered resume builder",
+      description: "An Open Source AI based resume optimizer with keywords generation based on job description with personalized AI chat bot.",
+      tech: ["nextjs","React", "Node.js", "Express", "Groq API", "PostgreSQL", "Prisma", "Vercel", "Tailwind CSS"],
+      features: ["AI powered resume builder", "Keywords generation based on job description", "Personalized AI chat bot"],
+      github: "https://github.com/phani-manda/resumate",
+      live: "https://resumate-rust.vercel.app/",
+      image: "/resumate.png"
+    },
+    {
+      id: 4,
+      title: "ChatX - Real Time Chat Application",
+      description: "A real time chat application using web sockets for instant communication between users. Supports one on one and group chats.",
+      tech: ["React", "Node.js", "Express", "Socket.io", "MongoDB"],
+      features: ["one on one chat", "group chat", "real time communication", "user authentication", "file sharing", "clean flexible UI"],
+      github: "https://github.com/phani-manda/chatX",
+      live: "https://chatx-zydfu.sevalla.app/",
+      image: "/chatx.jpg"
     }
   ],
 
